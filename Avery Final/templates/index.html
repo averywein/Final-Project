@@ -1,0 +1,29 @@
+<a href="/history">Click here for your search history</a>
+	<form method="POST" action="/tweets">
+	{{ form.hidden_tag() }}
+	{{ form.hashtag.label }} {{ form.hashtag() }}
+	{{ form.location.label }} {{ form.location() }}
+	{{ form.submit() }}
+</form>
+
+
+<button onClick="runAJAX()">Get UM Tweets with AJAX</button>
+
+<div></div>
+<script src="/static/jquery.js"></script>
+
+<script>
+function runAJAX () {
+	$.ajax({
+	  url: "/ajax",
+		dataType: "json"
+	})
+	  .done(function( data ) {
+
+			$.each(data.umich, function(index, value) {
+	    $("<p>"+ value.text + "</p>").appendTo($('div'))
+	});
+
+	  });
+		}
+</script>
