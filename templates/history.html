@@ -1,8 +1,0 @@
-<h1>Your Search History</h1>
-
-{% for search in list_of_searches %}
-<li>
-	<a href="/hashtag/{{search.Hashtag.text}}/location/{{search.Location.name}}">{{search.Hashtag.text}} in {{search.Location.name}}</a>
-
-</li>
-{% endfor %}
